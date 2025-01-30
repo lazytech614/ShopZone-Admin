@@ -12,13 +12,7 @@ const SetupPage = () => {
     if(!isOpen) onOpen()
   }, [isOpen, onOpen])
 
-  return (
-    <div>
-      {/* This is a protected route
-      <UserButton /> */}
-      Root page
-    </div>
-  )
+  return null
 }
 
 export default SetupPage
