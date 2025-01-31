@@ -23,5 +23,5 @@ export const POST = async (req: Request) => {
     }catch(err){
         console.log("stores/post", err);
         return new NextResponse("Internal server error.", {status: 500})
-    }finally{}
+    }
 }
