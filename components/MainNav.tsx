@@ -13,7 +13,7 @@ const MainNav = ({className, ...props} : React.HTMLAttributes<HTMLDivElement>) =
     const routes = [
         {
             href: `/${params.storeId}`,
-            label: 'Dashboard',
+            label: 'Overview',
             active: pathname === `/${params.storeId}`
         },
         {
@@ -42,6 +42,11 @@ const MainNav = ({className, ...props} : React.HTMLAttributes<HTMLDivElement>) =
             active: pathname === `/${params.storeId}/products`
         },
         {
+            href: `/${params.storeId}/orders`,
+            label: 'orders',
+            active: pathname === `/${params.storeId}/orders`
+        },
+        {
             href: `/${params.storeId}/settings`,
             label: 'Settings',
             active: pathname === `/${params.storeId}/settings`
@@ -54,7 +59,7 @@ const MainNav = ({className, ...props} : React.HTMLAttributes<HTMLDivElement>) =
           <Link 
             key={route.href}
             href={route.href}
-            className={cn("text-sm font-medium transition-colors hover:text-primary", route.active ? "text-black dark:text-white" : "text-muted-foreground")}
+            className={cn("capitalize text-sm font-medium transition-colors hover:text-primary", route.active ? "text-black dark:text-white" : "text-muted-foreground")}
           >
             {route.label}
           </Link>
