@@ -53,7 +53,6 @@ const SettingsForm: React.FC<SettingsFormProps> = ({initialData}) => {
     const onSubmit = async (data: SettingsFormValues) => {
         try {
             setIsLoading(true)
-            console.log("StoreId", params.storeId);
             await axios.patch(`/api/stores/${params.storeId}`, data)
             router.refresh()
             toast.success("Store updated successfully.")

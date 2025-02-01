@@ -101,8 +101,9 @@ const ProductForm: React.FC<ProductFormProps> = ({
         try {
             setIsLoading(true)
             if(initialData) {
-                await axios.patch(`/api/${params.storeId}/products/${params.colorId}`, data)
+                await axios.patch(`/api/${params.storeId}/products/${params.productId}`, data)
             }else {
+                console.log("StoreId", params.storeId);
                 await axios.post(`/api/${params.storeId}/products`, data)
             }
             router.refresh()
@@ -118,7 +119,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
     const onDelete = async () => {
         try {
             setIsLoading(true)
-            await axios.delete(`/api/${params.storeId}/products/${params.colorId}`)
+            await axios.delete(`/api/${params.storeId}/products/${params.productId}`)
             router.refresh()
             router.push(`/${params.storeId}/products`)
             toast.success("Color deleted successfully.")
