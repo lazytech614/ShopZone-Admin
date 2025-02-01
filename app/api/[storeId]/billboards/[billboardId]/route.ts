@@ -85,7 +85,6 @@ export const DELETE = async (req: Request, {params}: {params: {storeId: string, 
 
         return NextResponse.json(billboard)
     }catch(err) {
-        console.log("delete billboard", err);
         return new NextResponse("Internal server error.", {status: 500})
     }
 }

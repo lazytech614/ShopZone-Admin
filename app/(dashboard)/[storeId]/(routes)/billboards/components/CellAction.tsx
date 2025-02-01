@@ -10,7 +10,7 @@ import {
 import axios from 'axios'
 import toast from 'react-hot-toast'
 
-import { BillboardColumn } from '@/components/Columns'
+import { BillboardColumn } from './Columns'
 import { 
     DropdownMenu, 
     DropdownMenuContent, 
