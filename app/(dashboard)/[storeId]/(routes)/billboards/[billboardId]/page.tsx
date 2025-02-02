@@ -1,15 +1,15 @@
 import React from 'react';
-import { NextPage } from 'next';
 import prismadb from '@/lib/prismadb';
 import BillboardForm from './components/BillboardForm';
 
-interface BillboardPageProps {
+interface PageProps {
   params: {
     billboardId: string;
+    storeId: string; // Add this if you have multiple dynamic segments
   };
 }
 
-const BillboardPage: NextPage<BillboardPageProps> = async ({ params }) => {
+export default async function BillboardPage({ params }: PageProps) {
   const billboard = await prismadb.billboard.findUnique({
     where: {
       id: params.billboardId,
@@ -23,6 +23,4 @@ const BillboardPage: NextPage<BillboardPageProps> = async ({ params }) => {
       </div>
     </div>
   );
-};
-
-export default BillboardPage;
+}
