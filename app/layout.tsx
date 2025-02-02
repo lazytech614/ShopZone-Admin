@@ -11,7 +11,7 @@ import { StoreModalProvider } from '@/providers/modalProvider';
 import { ToastProvider } from '@/providers/toastProvider';
 
 import "./globals.css";
-
+import { ThemeProvider } from '@/providers/themeProvider';
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -38,9 +38,16 @@ export default function RootLayout({
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
-          <ToastProvider />
-          <StoreModalProvider />
-          {children} 
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <ToastProvider />
+            <StoreModalProvider />
+            {children}
+          </ThemeProvider> 
         </body>
       </ClerkProvider>
     </html>
