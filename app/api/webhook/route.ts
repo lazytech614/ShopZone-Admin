@@ -7,7 +7,7 @@ import prismadb from "@/lib/prismadb";
 
 export async function POST(req: Request) {
     const body = await req.text();
-    // @ts-expect-error
+    // @ts-expect-error   Did it to remove the error from get method
     const signature = headers().get("Stripe-Signature") as string;
 
     let event: Stripe.Event;

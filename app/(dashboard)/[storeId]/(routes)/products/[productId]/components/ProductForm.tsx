@@ -81,7 +81,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
 
     const form = useForm<ProductFormValues>({
         resolver: zodResolver(formSchema),
-        // @ts-expect-error 
+        // @ts-expect-error Did it to remove the error
         defaultValues: initialData ? {
             ...initialData,
             price: parseFloat(String(initialData?.price)),
