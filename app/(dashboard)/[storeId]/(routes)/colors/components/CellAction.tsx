@@ -46,6 +46,7 @@ const CellAction:React.FC<CellActionProps> = ({data}) => {
             router.push(`/${params.storeId}/colors`)
             toast.success("Color deleted successfully.")
         }catch(err) {
+            console.log(err);
             toast.error("Something went wrong.")
         }finally {
             setIsOpen(false)

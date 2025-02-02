@@ -134,6 +134,7 @@ export const DELETE = async (req: Request, {params}: {params: {storeId: string, 
 
         return NextResponse.json(product)
     }catch(err) {
+        console.log("product delete", err);
         return new NextResponse("Internal server error.", {status: 500})
     }
 }

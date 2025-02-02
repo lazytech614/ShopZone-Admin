@@ -46,6 +46,7 @@ const CellAction:React.FC<CellActionProps> = ({data}) => {
             router.push(`/${params.storeId}/products`)
             toast.success("Product deleted successfully.")
         }catch(err) {
+            console.log(err);
             toast.error("Something went wrong.")
         }finally {
             setIsOpen(false)

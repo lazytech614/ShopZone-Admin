@@ -81,7 +81,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
 
     const form = useForm<ProductFormValues>({
         resolver: zodResolver(formSchema),
-        // @ts-ignore
+        // @ts-expect-error 
         defaultValues: initialData ? {
             ...initialData,
             price: parseFloat(String(initialData?.price)),
@@ -110,6 +110,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
             router.push(`/${params.storeId}/products`)
             toast.success(toastMessage)
         }catch(err) {
+            console.log(err)
             toast.error("Something went wrong.")
         }finally{
             setIsLoading(false)
@@ -124,6 +125,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
             router.push(`/${params.storeId}/products`)
             toast.success("Color deleted successfully.")
         }catch(err) {
+            console.log(err)
             toast.error("Make sure you removed all products and categories using this color.")
         }finally {
             setIsOpen(false)

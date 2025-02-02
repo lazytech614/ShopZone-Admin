@@ -3,11 +3,8 @@
 import React from 'react'
 import {
     Bar, 
-    BarChart, 
-    CartesianGrid, 
-    Legend, 
+    BarChart,  
     ResponsiveContainer, 
-    Tooltip, 
     XAxis, 
     YAxis
 } from 'recharts'

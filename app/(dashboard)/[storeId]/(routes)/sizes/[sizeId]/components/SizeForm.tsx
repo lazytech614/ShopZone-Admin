@@ -66,6 +66,7 @@ const SizeForm: React.FC<SizeFormProps> = ({initialData}) => {
             router.push(`/${params.storeId}/sizes`)
             toast.success(toastMessage)
         }catch(err) {
+            console.log(err)
             toast.error("Something went wrong.")
         }finally{
             setIsLoading(false)
@@ -80,6 +81,7 @@ const SizeForm: React.FC<SizeFormProps> = ({initialData}) => {
             router.push(`/${params.storeId}/sizes`)
             toast.success("Size deleted successfully.")
         }catch(err) {
+            console.log(err)
             toast.error("Make sure you removed all products and categories using this size.")
         }finally {
             setIsOpen(false)

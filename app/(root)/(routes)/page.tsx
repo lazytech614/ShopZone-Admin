@@ -1,8 +1,7 @@
 "use client"
 
 import { useStoreModal } from '@/hooks/useStoreModal'
-import { UserButton } from '@clerk/nextjs'
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 
 const SetupPage = () => {
   const onOpen = useStoreModal((state) => state.onOpen)

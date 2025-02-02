@@ -67,6 +67,7 @@ const BillboardForm: React.FC<BillboardFormProps> = ({initialData}) => {
             router.push(`/${params.storeId}/billboards`)
             toast.success(toastMessage)
         }catch(err) {
+            console.log(err)
             toast.error("Something went wrong.")
         }finally{
             setIsLoading(false)
@@ -81,6 +82,7 @@ const BillboardForm: React.FC<BillboardFormProps> = ({initialData}) => {
             router.push(`/${params.storeId}/billboards`)
             toast.success("Billboard deleted successfully.")
         }catch(err) {
+            console.log(err);
             toast.error("Make sure you removed all products and categories using this billboard.")
         }finally {
             setIsOpen(false)
