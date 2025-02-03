@@ -6,11 +6,13 @@ export const POST = async (req: Request, {params}: {params: {storeId: string}}) 
     try{
         const {userId} = await auth()
         const body = await req.json()
-        const {name} = body
+        const {name, imageUrl} = body
         
         if(!userId) return new NextResponse("Unauthenticated", {status: 401})
 
         if(!name) return new NextResponse("Name is required", {status: 400})
+
+        if(!imageUrl) return new NextResponse("Image URL is required", {status: 400})
 
         // if(!billboardId) return new NextResponse("Billboard ID URL is required", {status: 400})
 
@@ -28,7 +30,8 @@ export const POST = async (req: Request, {params}: {params: {storeId: string}}) 
         const category = await prismadb.category.create({
             data: {
                 name,
-                storeId: params.storeId
+                storeId: params.storeId,
+                categoryImage: imageUrl
             }
         })
 

@@ -19,6 +19,7 @@ const CategoriesPage = async ({params}: {params: {storeId: string}}) => {
         id: category.id,
         name: category.name,
         // billboardLabel: category.billboard.label,
+        categoryImage: category.categoryImage,
         createdAt: format(category.createdAt, 'MMMM do, yyyy'),
     }))
 

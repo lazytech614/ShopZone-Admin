@@ -27,13 +27,15 @@ export const PATCH = async (req: Request, {params}: {params: {storeId: string, c
     try {
         const {userId} = await auth()
         const body = await req.json()
-        const {name} = body
+        const {name, categoryImage} = body
 
         if(!userId) return new NextResponse("Unauthenticated", {status: 401})
 
         if(!name) return new NextResponse("Name is required", {status: 400})
 
         // if(!billboardId) return new NextResponse("Billboard ID is required", {status: 400})
+
+        if(!categoryImage) return new NextResponse("Image URL is required", {status: 400})
 
         if(!params.categoryId) return new NextResponse("Category ID is required", {status: 400})
 
@@ -52,6 +54,7 @@ export const PATCH = async (req: Request, {params}: {params: {storeId: string, c
             },
             data: {
                 name,
+                categoryImage: categoryImage
                 // billboardId
             }
         })

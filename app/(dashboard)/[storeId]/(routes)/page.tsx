@@ -33,8 +33,6 @@ const DashboardPage: React.FC<DashboardPageProps> = async ({params}) => {
 
   const revenueGraph = await getRevenueGraph(params.storeId)
 
-  console.log(revenueGraph);
-
   return (
     <div className='flex-col'>
       <div className='flex-1 space-y-4 p-8 pt-6'>
