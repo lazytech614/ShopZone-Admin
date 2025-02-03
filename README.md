@@ -2,8 +2,6 @@
 
 A comprehensive SaaS solution for managing multiple e-commerce stores through a single dashboard. Built with modern web technologies for optimal performance and developer experience.
 
-![Admin Panel Preview](https://via.placeholder.com/800x400?text=Admin+Panel+Screenshot) 
-*Replace with actual screenshot*
 
 ## Features ✨
 - **Multi-Store Management** - Create/remove stores with individual configurations
