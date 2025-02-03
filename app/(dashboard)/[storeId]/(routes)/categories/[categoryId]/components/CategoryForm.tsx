@@ -35,16 +35,16 @@ import { Billboard } from '@prisma/client'
 
 const formSchema = z.object({
     name: z.string().min(1),
-    billboardId: z.string().min(1),
+    // billboardId: z.string().min(1),
 })
 
 type CategoryFormValues = z.infer<typeof formSchema>
 
 interface CategoryFormProps {
     initialData: Category | null
-    billboards: Billboard[]
+    // billboards: Billboard[]
 }
-const CategoryForm: React.FC<CategoryFormProps> = ({initialData, billboards}) => {
+const CategoryForm: React.FC<CategoryFormProps> = ({initialData}) => {
     const [isOpen, setIsOpen] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
 
@@ -60,7 +60,7 @@ const CategoryForm: React.FC<CategoryFormProps> = ({initialData, billboards}) =>
         resolver: zodResolver(formSchema),
         defaultValues: initialData || {
             name: "",
-            billboardId: "",
+            // billboardId: "",
         }
     })
 
@@ -150,7 +150,7 @@ const CategoryForm: React.FC<CategoryFormProps> = ({initialData, billboards}) =>
                             </FormItem>
                         )}
                     />
-                    <FormField
+                    {/* <FormField
                         control={form.control}
                         name='billboardId'
                         render={({field}) => (
@@ -184,7 +184,7 @@ const CategoryForm: React.FC<CategoryFormProps> = ({initialData, billboards}) =>
                                 <FormMessage />
                             </FormItem>
                         )}
-                    />
+                    /> */}
                 </div>
                 <Button
                     disabled={isLoading}

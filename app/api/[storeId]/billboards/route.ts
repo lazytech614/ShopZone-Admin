@@ -46,7 +46,7 @@ export const GET = async (req: Request, {params}: {params: {storeId: string}}) =
 
         const billboards = await prismadb.billboard.findMany({
             where: {
-                storeId: params.storeId
+                storeId: params.storeId,
             }
         })
 

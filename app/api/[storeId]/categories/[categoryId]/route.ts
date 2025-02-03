@@ -11,9 +11,9 @@ export const GET = async (req: Request, {params}: {params: {categoryId: string}}
             where: {
                 id: params.categoryId
             },
-            include: {
-                billboard: true
-            }
+            // include: {
+            //     billboard: true
+            // }
         })
 
         return NextResponse.json(category)
@@ -27,13 +27,13 @@ export const PATCH = async (req: Request, {params}: {params: {storeId: string, c
     try {
         const {userId} = await auth()
         const body = await req.json()
-        const {name, billboardId} = body
+        const {name} = body
 
         if(!userId) return new NextResponse("Unauthenticated", {status: 401})
 
         if(!name) return new NextResponse("Name is required", {status: 400})
 
-        if(!billboardId) return new NextResponse("Billboard ID is required", {status: 400})
+        // if(!billboardId) return new NextResponse("Billboard ID is required", {status: 400})
 
         if(!params.categoryId) return new NextResponse("Category ID is required", {status: 400})
 
@@ -52,7 +52,7 @@ export const PATCH = async (req: Request, {params}: {params: {storeId: string, c
             },
             data: {
                 name,
-                billboardId
+                // billboardId
             }
         })
 

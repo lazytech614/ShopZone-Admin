@@ -7,6 +7,7 @@ export type BillboardColumn = {
   id: string
   label: string
   createdAt: string
+  isActive: boolean
 }
 
 export const columns: ColumnDef<BillboardColumn>[] = [
@@ -17,6 +18,10 @@ export const columns: ColumnDef<BillboardColumn>[] = [
   {
     accessorKey: "createdAt",
     header: "Date",
+  },
+  {
+    accessorKey: "isActive",
+    header: "Active",
   },
   {
     id: "actions",

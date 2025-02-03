@@ -24,7 +24,7 @@ export const PATCH = async (req: Request, {params}: {params: {storeId: string, b
     try {
         const {userId} = await auth()
         const body = await req.json()
-        const {label, imageUrl} = body
+        const {label, imageUrl, isActive} = body
 
         if(!userId) return new NextResponse("Unauthenticated", {status: 401})
 
@@ -49,7 +49,8 @@ export const PATCH = async (req: Request, {params}: {params: {storeId: string, b
             },
             data: {
                 label,
-                imageUrl
+                imageUrl, 
+                isActive
             }
         })
 
