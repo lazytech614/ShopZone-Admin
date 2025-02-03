@@ -30,6 +30,9 @@ const ProductsPage = async ({params}: {params: {storeId: string}}) => {
     category: product.category.name,
     size: product.size.name,
     color: product.color.value,
+    quantity: product.quantity,
+    material: product.material,
+    brand: product.brand,
     createdAt: format(product.createdAt, 'MMMM do, yyyy'),
   }))
 

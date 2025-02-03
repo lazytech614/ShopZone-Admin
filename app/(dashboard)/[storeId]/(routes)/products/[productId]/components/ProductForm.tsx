@@ -40,6 +40,7 @@ import {
     SelectValue,
 } from "@/components/ui/select"
 import { Checkbox } from '@/components/ui/checkbox'
+import { Textarea } from '@/components/ui/textarea'
 
 const formSchema = z.object({
     name: z.string().min(1),
@@ -48,6 +49,11 @@ const formSchema = z.object({
     categoryId: z.string().min(1),
     sizeId: z.string().min(1),
     colorId: z.string().min(1),
+    productDescription: z.string().min(1),
+    quantity: z.coerce.number().min(1),
+    material: z.string().default("N/A").optional(),
+    brand: z.string().default("N/A").optional(),
+    ratings: z.coerce.number().min(0).max(5),
     isFeatured: z.boolean().default(false).optional(),
     isArchived: z.boolean().default(false).optional(),
 })
@@ -92,6 +98,11 @@ const ProductForm: React.FC<ProductFormProps> = ({
             categoryId: "",
             sizeId: "",
             colorId: "",
+            productDescription: "",
+            quantity: 0,
+            material: "",
+            brand: "",
+            ratings: 0,
             isFeatured: false,
             isArchived: false
         }
@@ -183,7 +194,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
                         </FormItem>
                     )}
                 />
-                <div className='grid grid-cols-3 gap-8'>
+                <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8'>
                     <FormField
                         control={form.control}
                         name='name'
@@ -324,6 +335,82 @@ const ProductForm: React.FC<ProductFormProps> = ({
                                     ))}
                                 </SelectContent>
                                 </Select>
+                            <FormMessage />
+                        </FormItem>
+                    )}
+                />
+                <FormField
+                    control={form.control}
+                    name='quantity'
+                    render={({field}) => (
+                        <FormItem>
+                            <FormLabel>
+                                Quantity
+                            </FormLabel>
+                            <FormControl>
+                                <Input 
+                                    disabled={isLoading}
+                                    placeholder='1'
+                                    {...field}
+                                    type='number'
+                                />
+                            </FormControl>
+                            <FormMessage />
+                        </FormItem>
+                    )}
+                />
+                <FormField
+                    control={form.control}
+                    name='brand'
+                    render={({field}) => (
+                        <FormItem>
+                            <FormLabel>
+                                Brand
+                            </FormLabel>
+                            <FormControl>
+                                <Input 
+                                    disabled={isLoading}
+                                    placeholder='Product brand'
+                                    {...field}
+                                />
+                            </FormControl>
+                            <FormMessage />
+                        </FormItem>
+                    )}
+                />
+                <FormField
+                    control={form.control}
+                    name='material'
+                    render={({field}) => (
+                        <FormItem>
+                            <FormLabel>
+                                Material
+                            </FormLabel>
+                            <FormControl>
+                                <Input 
+                                    disabled={isLoading}
+                                    placeholder='Product material'
+                                    {...field}
+                                />
+                            </FormControl>
+                            <FormMessage />
+                        </FormItem>
+                    )}
+                />
+                <FormField
+                    control={form.control}
+                    name="productDescription"
+                    render={({ field }) => (
+                        <FormItem>
+                            <FormLabel>Product Description</FormLabel>
+                            <FormControl>
+                                <Textarea
+                                    placeholder="Product description..."
+                                    className="resize-none"
+                                    disabled={isLoading}
+                                    {...field}
+                                />
+                            </FormControl>
                             <FormMessage />
                         </FormItem>
                     )}

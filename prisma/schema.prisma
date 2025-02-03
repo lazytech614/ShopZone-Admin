@@ -73,6 +73,7 @@ model Product {
   categoryId String
   category Category @relation("CategoryToProduct", fields: [categoryId], references: [id])
   name String
+  productDescription String
   price Decimal
   isFeatured Boolean @default(false)
   isArchived Boolean @default(false)
@@ -80,8 +81,12 @@ model Product {
   size Size @relation(fields: [sizeId], references: [id])
   colorId String
   color Color @relation(fields: [colorId], references: [id])
+  quantity Int
   images Image[] 
   orderItems OrderItem[]
+  brand String?
+  material String?
+  ratings Float? @default(0.0)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }

@@ -5,6 +5,8 @@ import { useParams, usePathname } from 'next/navigation'
 
 import { cn } from '@/lib/utils'
 import Link from 'next/link'
+import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent } from './ui/dropdown-menu'
+import { MenuIcon } from 'lucide-react'
 
 const MainNav = ({className} : React.HTMLAttributes<HTMLDivElement>) => {
     const pathname = usePathname()
@@ -54,16 +56,36 @@ const MainNav = ({className} : React.HTMLAttributes<HTMLDivElement>) => {
     ]
 
   return (
-    <nav className={cn("flex items-center space-x-4", className)}>
-        {routes.map(route => (
-          <Link 
-            key={route.href}
-            href={route.href}
-            className={cn("capitalize text-sm font-medium transition-colors hover:text-primary", route.active ? "text-black dark:text-white" : "text-muted-foreground")}
-          >
-            {route.label}
-          </Link>
-        ))}
+    <nav className='flex justify-end flex-1 pr-2 lg:block lg:pr-0'>
+        <div className={cn("hidden lg:flex items-center space-x-4", className)}>
+          {routes.map(route => (
+            <Link 
+              key={route.href}
+              href={route.href}
+              className={cn("capitalize text-sm font-medium transition-colors hover:text-primary", route.active ? "text-black dark:text-white" : "text-muted-foreground")}
+            >
+              {route.label}
+            </Link>
+          ))}
+        </div>
+        <div className='lg:hidden'>
+          <DropdownMenu>
+            <DropdownMenuTrigger>
+              <MenuIcon className='w-6 h-6' />
+            </DropdownMenuTrigger>
+            <DropdownMenuContent className='flex flex-col gap-y-2 p-4'>
+              {routes.map(route => (
+                <Link 
+                  key={route.href}
+                  href={route.href}
+                  className={cn("capitalize text-sm font-medium transition-colors hover:text-primary", route.active ? "text-black dark:text-white" : "text-muted-foreground")}
+                >
+                  {route.label}
+                </Link>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
     </nav>
   )
 }

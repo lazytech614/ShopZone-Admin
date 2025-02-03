@@ -13,6 +13,10 @@ export const POST = async (req: Request, {params}: {params: {storeId: string}}) 
             categoryId,
             sizeId,
             colorId,
+            quantity,
+            material,
+            productDescription,
+            brand,
             isFeatured,
             isArchived
         } = body
@@ -50,18 +54,19 @@ export const POST = async (req: Request, {params}: {params: {storeId: string}}) 
                 name,
                 price,
                 images: {
-                    // createMany: {
-                    //     data: [...images.map((image: {url: string}) => image)]
-                    // }
                     createMany: {
                         data: images.map((image: { url: string }) => ({
-                          imageUrl: image.url, // map to imageUrl
+                          imageUrl: image.url,
                         }))
                       }
                 },
                 categoryId,
                 sizeId,
                 colorId,
+                quantity,
+                material,
+                productDescription,
+                brand,
                 isFeatured,
                 isArchived,
                 storeId: params.storeId

@@ -37,6 +37,10 @@ export const PATCH = async (req: Request, {params}: {params: {storeId: string, p
             sizeId,
             colorId,
             images,
+            productDescription,
+            material,
+            brand,
+            quantity,
             isFeatured,
             isArchived
         } = body
@@ -79,6 +83,10 @@ export const PATCH = async (req: Request, {params}: {params: {storeId: string, p
                 images: {
                     deleteMany: {},
                 },
+                productDescription,
+                material,
+                brand,
+                quantity,
                 isFeatured,
                 isArchived
             }
@@ -90,12 +98,9 @@ export const PATCH = async (req: Request, {params}: {params: {storeId: string, p
             },
             data: {
                 images: {
-                    // createMany: {
-                    //     data: [...images.map((image: {url: string}) => image)]
-                    // }
                     createMany: {
                         data: images.map((image: { url: string }) => ({
-                          imageUrl: image.url, // map to imageUrl
+                          imageUrl: image.url,
                         }))
                       }
                 }
